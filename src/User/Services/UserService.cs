@@ -18,7 +18,7 @@ namespace ShijiMiddlewareTask.User.Services
         }
 
         // Service methods
-        public Task<int> GetNextId(string clientId)
+        public async Task<int> GetNextId(string clientId)
         {
             // Example filtering of request. ClientId must not be less than 3 characters.
             if(clientId.Length < 3)
@@ -34,7 +34,7 @@ namespace ShijiMiddlewareTask.User.Services
             }
 
             // If the user request passed the filtering, we access the repository/provider level.
-            return this._userProvider.GetUserNextId(clientId);
+            return await this._userProvider.GetUserNextId(clientId);
         }
     }
 }
